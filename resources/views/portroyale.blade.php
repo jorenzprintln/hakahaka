@@ -32,7 +32,7 @@
         }
 
         body {
-            background: var(--dark-primary);
+            background:linear-gradient(180deg, #1a1a2e, #231136);
             min-height: 100vh;
             font-family: 'Inter', 'Segoe UI', sans-serif;
             color: var(--text-light);
@@ -67,7 +67,7 @@
             font-weight: 700;
             margin-bottom: 1rem;
             letter-spacing: 2px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 2);
             animation: fadeInUp 1s ease-out;
         }
 
@@ -75,6 +75,7 @@
             font-size: clamp(1.1rem, 2vw, 1.3rem);
             font-weight: 300;
             opacity: 0.95;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 2);
             animation: fadeInUp 1s ease-out 0.3s both;
         }
 
@@ -608,11 +609,23 @@
     </style>
 </head>
 <body>
+    <!-- Sticky Header -->
+    <nav class="navbar navbar-dark sticky-top" style="background: linear-gradient(90deg, #1a1a2e 70%, #663399 100%); box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+        <div class="container-fluid">
+            <a class="navbar-brand  w-100 d-flex justify-content-center align-items-center gap-2" href="#">
+                <img src="{{ asset('images/Component 1.png') }}" alt="Logo" width="40" height="40" class="rounded-circle shadow-sm">
+                <span style="font-weight:700; letter-spacing:1px;">RevScrap</span>
+            </a>
+        </div>
+    </nav>
+    <!-- End Sticky Header -->
+
     <div class="hero-banner">
         <div class="hero-content">
             <h1>PORT ROYALE</h1>
-            <p>Where Luxury Meets Comfort </p>
+            <p style="margin-top: -1rem">Where Luxury Meets Comfort</p>
         </div>
+        <div style="position:absolute;bottom:0;left:0;width:100%;height:60px;background:linear-gradient(0deg,rgba(26,26,46,0.95),rgba(26,26,46,0));z-index:1;"></div>
     </div>
 
     <div class="main-container">
