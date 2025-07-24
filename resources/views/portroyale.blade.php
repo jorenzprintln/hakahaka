@@ -1,24 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Port Royale - Tacloban City</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
     <style>
         /* Define your dark theme colors */
         :root {
-            --dark-primary: #1a1a2e; /* Deep dark background */
-            --dark-secondary: #16213e; /* Slightly lighter dark for cards */
-            --purple-accent-light: #e0b0ff; /* Light purple for highlights */
-            --purple-accent-dark: #663399; /* Darker purple for main accents */
-            --text-light: #e0e0e0; /* Light gray text */
-            --text-muted: #aaaaaa; /* Muted gray text */
+            --dark-primary: #1a1a2e;
+            /* Deep dark background */
+            --dark-secondary: #16213e;
+            /* Slightly lighter dark for cards */
+            --purple-accent-light: #e0b0ff;
+            /* Light purple for highlights */
+            --purple-accent-dark: #663399;
+            /* Darker purple for main accents */
+            --text-light: #e0e0e0;
+            /* Light gray text */
+            --text-muted: #aaaaaa;
+            /* Muted gray text */
             --white: #ffffff;
-            --yellow-star: #ffd700; /* Star rating color */
+            --yellow-star: #ffd700;
+            /* Star rating color */
             --green-success: #00b894;
             --blue-info: #48dbfb;
             --red-danger: #ff6b6b;
@@ -45,14 +56,15 @@
             height: 30vh;
             min-height: 400px;
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)),
-                        url('{{ asset('images/portroyale_bg.jpg') }}');
+                url('{{ asset('images/portroyale_bg.jpg') }}');
             background-size: cover;
             background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 2rem;
-            border-bottom: 5px solid var(--purple-accent-dark); /* Subtle accent */
+            border-bottom: 5px solid var(--purple-accent-dark);
+            /* Subtle accent */
         }
 
         .hero-content {
@@ -84,6 +96,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -99,11 +112,15 @@
 
         /* Card Styles */
         .glass-card {
-            background: rgba(26, 26, 46, 0.85); /* Darker translucent background */
+            background: rgba(26, 26, 46, 0.85);
+            /* Darker translucent background */
             backdrop-filter: blur(15px);
-            border-radius: 15px; /* Slightly less rounded */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Darker, more pronounced shadow */
-            border: 1px solid rgba(102, 51, 153, 0.3); /* Purple border */
+            border-radius: 15px;
+            /* Slightly less rounded */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            /* Darker, more pronounced shadow */
+            border: 1px solid rgba(102, 51, 153, 0.3);
+            /* Purple border */
             margin-bottom: 2rem;
             padding: 2rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -125,10 +142,12 @@
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            border: 4px solid var(--purple-accent-light); /* Accent border */
+            border: 4px solid var(--purple-accent-light);
+            /* Accent border */
             object-fit: cover;
             margin-bottom: 1.5rem;
-            box-shadow: 0 8px 20px rgba(102, 51, 153, 0.5); /* Purple shadow */
+            box-shadow: 0 8px 20px rgba(102, 51, 153, 0.5);
+            /* Purple shadow */
             transition: transform 0.3s ease;
         }
 
@@ -137,7 +156,8 @@
         }
 
         .contact-info {
-            background: rgba(22, 33, 62, 0.7); /* Slightly lighter dark */
+            background: rgba(22, 33, 62, 0.7);
+            /* Slightly lighter dark */
             border-radius: 10px;
             padding: 1.5rem;
             border-left: 4px solid var(--purple-accent-light);
@@ -170,7 +190,8 @@
         }
 
         .resort-title {
-            color: var(--purple-accent-light); /* Purple title */
+            color: var(--purple-accent-light);
+            /* Purple title */
             font-weight: 700;
             font-size: clamp(1.5rem, 3vw, 2rem);
             margin-bottom: 1rem;
@@ -218,7 +239,8 @@
 
         /* Statistics Card */
         .stats-card {
-            background: linear-gradient(135deg, #0f3460, #16213e); /* Dark blue to dark purple */
+            background: linear-gradient(135deg, #0f3460, #16213e);
+            /* Dark blue to dark purple */
             color: var(--text-light);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
         }
@@ -237,7 +259,8 @@
             font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
-            color: var(--purple-accent-light); /* Accent label */
+            color: var(--purple-accent-light);
+            /* Accent label */
         }
 
         .stat-description {
@@ -266,12 +289,14 @@
         .stat-icon {
             font-size: clamp(2rem, 4vw, 2.5rem);
             opacity: 0.9;
-            color: var(--purple-accent-light); /* Accent icon */
+            color: var(--purple-accent-light);
+            /* Accent icon */
         }
 
         /* Reviews Section */
         .reviews-header {
-            color: var(--purple-accent-light); /* Accent heading */
+            color: var(--purple-accent-light);
+            /* Accent heading */
             font-weight: 700;
             font-size: 1.3rem;
             padding-bottom: 0.75rem;
@@ -280,40 +305,51 @@
 
         /* NEW CSS for the scrollable reviews container */
         #reviews-scroll-container {
-            max-height: 450px; /* Adjust this height as needed (e.g., 400px, 500px, 600px) */
-            overflow-y: auto;  /* Enable vertical scrollbar if content overflows */
-            padding-right: 15px; /* Add padding to prevent text from touching scrollbar */
-            box-sizing: border-box; /* Include padding in the element's total width and height */
-            margin-top: 1.5rem; /* Space between the header and the scrollable reviews */
+            max-height: 450px;
+            /* Adjust this height as needed (e.g., 400px, 500px, 600px) */
+            overflow-y: auto;
+            /* Enable vertical scrollbar if content overflows */
+            padding-right: 15px;
+            /* Add padding to prevent text from touching scrollbar */
+            box-sizing: border-box;
+            /* Include padding in the element's total width and height */
+            margin-top: 1.5rem;
+            /* Space between the header and the scrollable reviews */
         }
 
         /* Optional: Style the scrollbar for Webkit browsers (Chrome, Safari, Edge) */
         #reviews-scroll-container::-webkit-scrollbar {
-            width: 8px; /* Width of the scrollbar */
+            width: 8px;
+            /* Width of the scrollbar */
         }
 
         #reviews-scroll-container::-webkit-scrollbar-track {
-            background: var(--dark-secondary); /* Darker track */
+            background: var(--dark-secondary);
+            /* Darker track */
             border-radius: 10px;
         }
 
         #reviews-scroll-container::-webkit-scrollbar-thumb {
-            background: var(--purple-accent-dark); /* Purple handle */
+            background: var(--purple-accent-dark);
+            /* Purple handle */
             border-radius: 10px;
         }
 
         #reviews-scroll-container::-webkit-scrollbar-thumb:hover {
-            background: var(--purple-accent-light); /* Lighter purple on hover */
+            background: var(--purple-accent-light);
+            /* Lighter purple on hover */
         }
 
 
         .review-card {
-            background: var(--dark-secondary); /* Dark card background */
+            background: var(--dark-secondary);
+            /* Dark card background */
             border-radius: 10px;
             padding: 1.5rem;
             margin-bottom: 1.5rem;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(102, 51, 153, 0.2); /* Purple border */
+            border: 1px solid rgba(102, 51, 153, 0.2);
+            /* Purple border */
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -352,14 +388,16 @@
         .reviewer-info {
             color: var(--text-muted);
             font-size: 0.85rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1); /* Lighter border */
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            /* Lighter border */
             padding-top: 1rem;
             line-height: 1.4;
         }
 
         .reviewer-name {
             font-weight: 600;
-            color: var(--purple-accent-light); /* Accent name */
+            color: var(--purple-accent-light);
+            /* Accent name */
             margin-bottom: 0.25rem;
         }
 
@@ -368,7 +406,8 @@
             background: var(--dark-secondary);
             border-radius: 15px;
             height: 200px;
-            border: 2px dashed rgba(102, 51, 153, 0.4); /* Purple dashed border */
+            border: 2px dashed rgba(102, 51, 153, 0.4);
+            /* Purple dashed border */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -381,19 +420,23 @@
         /* Chart specific styles */
         .chart-container {
             position: relative;
-            height: 250px; /* Adjusted height for charts to fit better in a 2x2 grid */
+            height: 250px;
+            /* Adjusted height for charts to fit better in a 2x2 grid */
             width: 100%;
-            padding: 0 10px; /* Added padding to prevent charts from touching edges */
+            padding: 0 10px;
+            /* Added padding to prevent charts from touching edges */
             box-sizing: border-box;
         }
+
         .chart-section-title {
             color: var(--purple-accent-light);
             font-weight: 700;
             font-size: 1.5rem;
             text-align: center;
             margin-bottom: 2rem;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         }
+
         .chart-card-title {
             color: var(--purple-accent-light);
             font-weight: 600;
@@ -401,7 +444,8 @@
             margin-bottom: 1.5rem;
             text-align: center;
             padding-bottom: 0.75rem;
-            border-bottom: 2px solid rgba(102, 51, 153, 0.3); /* Purple border */
+            border-bottom: 2px solid rgba(102, 51, 153, 0.3);
+            /* Purple border */
         }
 
         /* Feedback Snippets Section */
@@ -414,34 +458,42 @@
             padding-bottom: 0.75rem;
             border-bottom: 2px solid rgba(102, 51, 153, 0.3);
         }
+
         #feedback-display {
-            min-height: 150px; /* Ensure space for feedback */
+            min-height: 150px;
+            /* Ensure space for feedback */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            opacity: 0; /* Start hidden for fade-in effect */
+            opacity: 0;
+            /* Start hidden for fade-in effect */
             transition: opacity 1s ease-in-out;
             padding: 1rem;
         }
+
         #feedback-display.fade-in-snippet {
             opacity: 1;
         }
+
         #feedback-display.fade-out-snippet {
             opacity: 0;
         }
+
         .feedback-content {
             font-style: italic;
             font-size: 1.1rem;
             color: var(--text-light);
             margin-bottom: 0.75rem;
         }
+
         .feedback-author {
             font-weight: 600;
             color: var(--purple-accent-light);
             font-size: 0.95rem;
         }
+
         .feedback-source {
             font-size: 0.85rem;
             color: var(--text-muted);
@@ -457,18 +509,23 @@
 
         /* Make list items more readable and show ranking */
         .improvement-card .improvements-list li {
-            background-color: var(--dark-secondary); /* Use secondary dark for better contrast */
-            border-left: 4px solid var(--orange-warning); /* Orange warning accent */
+            background-color: var(--dark-secondary);
+            /* Use secondary dark for better contrast */
+            border-left: 4px solid var(--orange-warning);
+            /* Orange warning accent */
             padding: 0.75rem 1rem;
             margin-bottom: 0.75rem;
             border-radius: 8px;
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            font-size: 1rem; /* Slightly larger font for readability */
-            font-weight: 500; /* Medium weight */
-            color: var(--text-light); /* Ensure text is light */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            font-size: 1rem;
+            /* Slightly larger font for readability */
+            font-weight: 500;
+            /* Medium weight */
+            color: var(--text-light);
+            /* Ensure text is light */
         }
 
         .improvement-card .improvements-list li:last-child {
@@ -486,22 +543,33 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 25px; /* Fixed width for alignment */
-            height: 25px; /* Fixed height for alignment */
-            background-color: var(--purple-accent-dark); /* Dark purple background */
-            color: var(--white); /* White number */
-            border-radius: 50%; /* Make it circular */
-            font-size: 0.8em; /* Slightly smaller than main text */
-            font-weight: 700; /* Bold */
-            margin-right: 0.75rem; /* Space before the text */
+            width: 25px;
+            /* Fixed width for alignment */
+            height: 25px;
+            /* Fixed height for alignment */
+            background-color: var(--purple-accent-dark);
+            /* Dark purple background */
+            color: var(--white);
+            /* White number */
+            border-radius: 50%;
+            /* Make it circular */
+            font-size: 0.8em;
+            /* Slightly smaller than main text */
+            font-weight: 700;
+            /* Bold */
+            margin-right: 0.75rem;
+            /* Space before the text */
             flex-shrink: 0;
         }
 
         /* Styling for the mentions badge */
         .improvement-card .badge {
-            background-color: rgba(102, 51, 153, 0.5) !important; /* Muted purple for the badge */
-            color: var(--purple-accent-light) !important; /* Light purple text */
-            font-size: 0.75em; /* Smaller font size for the badge */
+            background-color: rgba(102, 51, 153, 0.5) !important;
+            /* Muted purple for the badge */
+            color: var(--purple-accent-light) !important;
+            /* Light purple text */
+            font-size: 0.75em;
+            /* Smaller font size for the badge */
             font-weight: 600;
             padding: 0.3em 0.6em;
             border-radius: 12px;
@@ -515,7 +583,7 @@
             --bs-btn-hover-color: var(--white);
             --bs-btn-hover-bg: var(--purple-accent-dark);
             --bs-btn-hover-border-color: var(--purple-accent-dark);
-            --bs-btn-focus-shadow-rgb: 102,51,153;
+            --bs-btn-focus-shadow-rgb: 102, 51, 153;
             --bs-btn-active-color: var(--white);
             --bs-btn-active-bg: var(--purple-accent-light);
             --bs-btn-active-border-color: var(--purple-accent-light);
@@ -561,8 +629,10 @@
             .resort-description {
                 text-align: left;
             }
+
             .chart-container {
-                 height: 280px; /* Slightly taller on smaller screens for better readability */
+                height: 280px;
+                /* Slightly taller on smaller screens for better readability */
             }
         }
 
@@ -589,6 +659,7 @@
                 padding: 0.6rem 0.8rem;
                 font-size: 0.9rem;
             }
+
             .improvement-card .rank-number {
                 width: 20px;
                 height: 20px;
@@ -603,11 +674,19 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
+
 <body>
     <!-- Sticky Header -->
     <nav class="navbar navbar-dark sticky-top" style="background: linear-gradient(90deg, #1a1a2e 70%, #663399 100%); box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
@@ -627,6 +706,21 @@
         </div>
         <div style="position:absolute;bottom:0;left:0;width:100%;height:60px;background:linear-gradient(0deg,rgba(26,26,46,0.95),rgba(26,26,46,0));z-index:1;"></div>
     </div>
+
+    <div class="modal fade" id="summaryModal" tabindex="-1" aria-labelledby="summaryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-black" id="summaryModalLabel">Review Summary</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-black" id="summaryContent">
+              Loading summary...
+            </div>
+          </div>
+        </div>
+      </div>
+      
 
     <div class="main-container">
         <div class="row g-4">
@@ -706,9 +800,13 @@
                     </div>
 
                     <p class="resort-description">
-                        Nestled in the tranquil barangay of Manlurip, Port Royale offers a refreshing escape with its blend of tropical charm and luxurious comfort. Whether you're planning a serene weekend getaway or a private family celebration, Port Royale is the perfect seaside destination.
+                        Nestled in the tranquil barangay of Manlurip, Port Royale offers a refreshing escape with its
+                        blend of tropical charm and luxurious comfort. Whether you're planning a serene weekend getaway
+                        or a private family celebration, Port Royale is the perfect seaside destination.
 
-                        Enjoy scenic views, relaxing sea breezes, and top-tier amenities designed to make your visit unforgettable. Perfect for intimate events, romantic sunsets, or simply soaking in the peaceful coastal vibe.
+                        Enjoy scenic views, relaxing sea breezes, and top-tier amenities designed to make your visit
+                        unforgettable. Perfect for intimate events, romantic sunsets, or simply soaking in the peaceful
+                        coastal vibe.
                     </p>
                 </div>
 
@@ -721,24 +819,29 @@
 
                 <div class="glass-card improvement-card fade-in">
                     <h4 class="chart-card-title">Areas for Improvement</h4>
-                    <p class="text-light text-white text-center mb-4">Insights derived from negative and mixed feedback to help you enhance guest experience.</p>
+                    <p class="text-light text-white text-center mb-4">Insights derived from negative and mixed feedback
+                        to help you enhance guest experience.</p>
                     <ul class="improvements-list">
                         @forelse($topImprovementAreasWithCounts as $area => $count)
-                            @if($area !== 'no specific areas identified yet') {{-- Prevent showing fallback as a ranked item if no actual data --}}
+                            @if ($area !== 'no specific areas identified yet')
+                                {{-- Prevent showing fallback as a ranked item if no actual data --}}
                                 <li>
                                     <span class="rank-number">{{ $loop->iteration }}</span> {{-- Ranking number --}}
                                     <i class="bi bi-exclamation-triangle-fill"></i>
-                                    {{ ucfirst($area) }} <span class="badge bg-secondary ms-2">{{ $count }} mentions</span>
+                                    {{ ucfirst($area) }} <span class="badge bg-secondary ms-2">{{ $count }}
+                                        mentions</span>
                                 </li>
                             @else
-                                <li><i class="bi bi-info-circle-fill"></i> No specific improvement areas identified from recent feedback.</li>
+                                <li><i class="bi bi-info-circle-fill"></i> No specific improvement areas identified from
+                                    recent feedback.</li>
                                 <li><i class="bi bi-check-circle-fill"></i> Keep up the great work!</li>
                             @endif
                         @empty
                             {{-- This @empty block will technically not be hit if we send a dummy value,
                                  but it's good practice to keep it for robustness.
                                  The @if condition above handles the 'no data' case for the list items. --}}
-                            <li><i class="bi bi-info-circle-fill"></i> No specific improvement areas identified from recent feedback.</li>
+                            <li><i class="bi bi-info-circle-fill"></i> No specific improvement areas identified from
+                                recent feedback.</li>
                             <li><i class="bi bi-check-circle-fill"></i> Keep up the great work!</li>
                         @endforelse
                     </ul>
@@ -750,24 +853,34 @@
                 <div class="glass-card fade-in">
                     <div class="d-flex justify-content-between align-items-center reviews-header">
                         <h3 class="m-0">Guest Reviews</h3>
-                        <button class="btn btn-sm btn-outline-primary d-flex align-items-center gap-1">
+                        <button class="btn btn-sm btn-outline-primary d-flex align-items-center gap-1" id="summarizeBtn">
                             <i class="bi bi-stars"></i>
                             <span>Summarize</span>
                         </button>
                     </div>
+                    
 
                     {{-- WRAPPER DIV for scrollable reviews --}}
                     <div id="reviews-scroll-container">
                         @forelse($allReviews as $review)
                             <div class="review-card">
-                                @if($review->rating)
-                                    <div class="stars">{{ $review->stars }}</div>
+                                @if ($review->rating)
+                                    <div class="stars">
+                                        {{ $review->stars }}
+                                        <span class="badge 
+                                            @if($review->sentiment == 'positive') bg-success
+                                            @elseif($review->sentiment == 'negative') bg-danger
+                                            @else bg-secondary
+                                            @endif">
+                                            {{ ucfirst($review->sentiment) }}
+                                        </span>
+                                    </div>
                                 @endif
                                 <p class="review-text">"{{ $review->review_content }}"</p>
                                 <div class="reviewer-info">
                                     <div class="reviewer-name">{{ $review->reviewer_name ?? 'Anonymous' }}</div>
                                     <div>{{ \Carbon\Carbon::parse($review->review_date)->format('F Y') }}</div>
-                                    @if($review->source_platform)
+                                    @if ($review->source_platform)
                                         <div>Source: {{ $review->source_platform }}</div>
                                     @endif
                                 </div>
@@ -863,8 +976,8 @@
             const secondaryColor = '#663399'; // Darker purple
             const successColor = '#00b894'; // For positive sentiment
             const warningColor = '#ffbe76'; // For mixed sentiment
-            const dangerColor = '#ff6b6b';  // For negative sentiment
-            const infoColor = '#48dbfb';    // For neutral sentiment
+            const dangerColor = '#ff6b6b'; // For negative sentiment
+            const infoColor = '#48dbfb'; // For neutral sentiment
 
             const backgroundColors = [
                 primaryColor, secondaryColor, successColor, warningColor, dangerColor, infoColor,
@@ -939,7 +1052,8 @@
                     labels: Object.keys(platformDistributionData),
                     datasets: [{
                         data: Object.values(platformDistributionData),
-                        backgroundColor: backgroundColors.slice(0, Object.keys(platformDistributionData).length),
+                        backgroundColor: backgroundColors.slice(0, Object.keys(
+                            platformDistributionData).length),
                         borderColor: getCssVariable('--dark-secondary'), // Border around segments
                         borderWidth: 2
                     }]
@@ -971,9 +1085,9 @@
                         data: Object.values(sentimentDistributionData),
                         backgroundColor: [
                             successColor, // Positive
-                            infoColor,    // Neutral
-                            dangerColor,  // Negative
-                            warningColor  // Mixed
+                            infoColor, // Neutral
+                            dangerColor, // Negative
+                            warningColor // Mixed
                         ],
                         borderColor: getCssVariable('--dark-secondary'),
                         borderWidth: 2
@@ -1073,7 +1187,10 @@
                 setTimeout(() => {
                     const review = allReviewsData[currentSnippetIndex];
                     const reviewerName = review.reviewer_name || 'Anonymous';
-                    const reviewDate = new Date(review.review_date).toLocaleString('en-US', { month: 'long', year: 'numeric' });
+                    const reviewDate = new Date(review.review_date).toLocaleString('en-US', {
+                        month: 'long',
+                        year: 'numeric'
+                    });
                     const sourcePlatform = review.source_platform ? `(via ${review.source_platform})` : '';
 
                     feedbackDisplay.innerHTML = `
@@ -1090,8 +1207,59 @@
 
             // Update every 7 seconds
             setInterval(updateFeedbackSnippet, 7000);
-            updateFeedbackSnippet(); // Initial call to load the first snippet
+            updateFeedbackSnippet(); 
         });
     </script>
+
+<script>
+    document.getElementById("summarizeBtn").addEventListener("click", function () {
+        const modal = new bootstrap.Modal(document.getElementById("summaryModal"));
+        modal.show();
+    
+        // Show loading text
+        document.getElementById("summaryContent").innerHTML = "<p>Loading summary...</p>";
+    
+        fetch("{{ route('summarize.reviews') }}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": "{{ csrf_token() }}"
+            },
+            body: JSON.stringify({})
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.summary && data.summary.content) {
+                const summaryText = data.summary.content;
+    
+                // Split into sentences or lines, adjust as needed
+                const bulletPoints = summaryText
+                    .split(/[.?!]\s+/)  // Split by sentence ending
+                    .filter(point => point.trim().length > 0);
+    
+                // Create bullet list
+                const ul = document.createElement("ul");
+                bulletPoints.forEach(point => {
+                    const li = document.createElement("li");
+                    li.textContent = point.trim();
+                    ul.appendChild(li);
+                });
+    
+                // Replace content
+                const contentDiv = document.getElementById("summaryContent");
+                contentDiv.innerHTML = "";
+                contentDiv.appendChild(ul);
+            } else {
+                document.getElementById("summaryContent").textContent = "Failed to get summary.";
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            document.getElementById("summaryContent").textContent = "Error loading summary.";
+        });
+    });
+    </script>
+    
 </body>
+
 </html>

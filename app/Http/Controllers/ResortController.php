@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Http;
 use App\Models\TouristReview;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB; // Import the DB facade
-use Carbon\Carbon; // Import Carbon for date manipulation
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
+
 
 class ResortController extends Controller
 {
@@ -14,8 +17,8 @@ class ResortController extends Controller
         // Fetch all reviews for 'Port Royale' (or paginate if desired, but for stats, usually all relevant data)
         // For statistics, we'll fetch all reviews related to 'Port Royale'
         $allReviews = TouristReview::where('business_name', 'Port Royale')
-                                    ->orderBy('review_date', 'desc')
-                                    ->get();
+            ->orderBy('review_date', 'desc')
+            ->get();
 
         // --- Calculate Statistics ---
         $totalReviews = $allReviews->count();
@@ -25,25 +28,25 @@ class ResortController extends Controller
 
         // Rating Distribution
         $ratingDistribution = $allReviews->groupBy('rating')
-                                         ->map(fn($group) => $group->count())
-                                         ->sortKeys()
-                                         ->toArray();
+            ->map(fn($group) => $group->count())
+            ->sortKeys()
+            ->toArray();
         // Ensure all ratings from 1 to 5 are present, even if count is 0
         $fullRatingDistribution = [];
         for ($i = 1; $i <= 5; $i += 0.5) { // Assuming ratings can be .5 increments
-            $fullRatingDistribution[(string)$i] = $ratingDistribution[(string)$i] ?? 0;
+            $fullRatingDistribution[(string) $i] = $ratingDistribution[(string) $i] ?? 0;
         }
 
 
         // Reviews by Source Platform
         $reviewsByPlatform = $allReviews->groupBy('source_platform')
-                                        ->map(fn($group) => $group->count())
-                                        ->toArray();
+            ->map(fn($group) => $group->count())
+            ->toArray();
 
         // Reviews by Sentiment
         $reviewsBySentiment = $allReviews->groupBy('sentiment')
-                                         ->map(fn($group) => $group->count())
-                                         ->toArray();
+            ->map(fn($group) => $group->count())
+            ->toArray();
         // Ensure common sentiments are present
         $fullSentimentDistribution = [
             'positive' => $reviewsBySentiment['positive'] ?? 0,
@@ -111,4 +114,57 @@ class ResortController extends Controller
             'topImprovementAreasWithCounts' // NEW: Pass the areas for improvement WITH their counts
         ));
     }
+    public function summarizeReviews(Request $request)
+{
+    // Get only reviews for "Port Royale"
+    $reviews = TouristReview::where('business_name', 'Port Royale')
+        ->pluck('review_content')
+        ->toArray();
+
+    $combinedFeedback = implode(' ', $reviews);
+
+    if (empty($combinedFeedback)) {
+        return response()->json(['error' => 'No feedback found.'], 400);
+    }
+
+    try {
+        $response = Http::asForm()->post('http://192.168.1.161:5000/summarize', [
+            'summarize' => $combinedFeedback
+        ]);
+
+        if ($response->successful()) {
+            return response()->json($response->json());
+        } else {
+            return response()->json(['error' => 'Flask API Error'], 500);
+        }
+    } catch (\Exception $e) {
+        return response()->json(['error' => $e->getMessage()], 500);
+    }
+}
+public function showReviews()
+{
+    $reviews = Review::all();
+
+    foreach ($reviews as $review) {
+        if ($review->review_content) {
+            try {
+                $response = Http::asForm()->post('http://192.168.1.161:5000/sentiment', [
+                    'user_feedback' => $review->review_content
+                ]);
+
+                $result = $response->json();
+
+                $review->sentiment = $result['sentiment'] ?? 'neutral';
+            } catch (\Exception $e) {
+                $review->sentiment = 'neutral';
+            }
+        } else {
+            $review->sentiment = 'neutral';
+        }
+    }
+
+    return view('your-view-file', ['allReviews' => $reviews]);
+}
+
+
 }
