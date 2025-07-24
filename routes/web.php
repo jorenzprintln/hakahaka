@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ResortController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ResortController::class, 'showPortRoyale'])->name('portroyale');
