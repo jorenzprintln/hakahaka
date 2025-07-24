@@ -902,7 +902,7 @@
                     <h4 class="chart-card-title">Review Distribution</h4>
                     <div class="row">
                         <div class="col-md-6 mb-4">
-                            <h5 class="text-center mb-3">Rating Breakdown</h5>
+                            <h5 class="text-center mb-3">Star Rating Breakdown</h5>
                             <div class="chart-container">
                                 <canvas id="ratingDistributionChart"></canvas>
                             </div>
