@@ -43,7 +43,7 @@
         }
 
         body {
-            background:linear-gradient(180deg, #1a1a2e, #231136);
+            background: linear-gradient(180deg, #1a1a2e, #231136);
             min-height: 100vh;
             font-family: 'Inter', 'Segoe UI', sans-serif;
             color: var(--text-light);
@@ -684,15 +684,207 @@
                 transform: translateY(0);
             }
         }
+
+        .styled-modal .modal-content {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, var(--dark-primary) 0%, var(--dark-secondary) 100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .styled-modal .modal-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 51, 153, 0.1) 0%, rgba(102, 51, 153, 0.05) 100%);
+            pointer-events: none;
+        }
+
+        .styled-modal .modal-header {
+            background: rgba(102, 51, 153, 0.2);
+            backdrop-filter: blur(10px);
+            border: none;
+            border-bottom: 2px solid var(--purple-accent-dark);
+            padding: 2rem 2rem 1rem 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .styled-modal .modal-title {
+            color: var(--purple-accent-light) !important;
+            font-weight: 700;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .styled-modal .modal-title i {
+            background: rgba(224, 176, 255, 0.2);
+            padding: 0.5rem;
+            border-radius: 50%;
+            font-size: 1rem;
+        }
+
+        .styled-modal .btn-close {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            opacity: 1;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 3;
+            filter: invert(1);
+        }
+
+        .styled-modal .btn-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .styled-modal .modal-body {
+            background: rgba(22, 33, 62, 0.8);
+            color: var(--text-light) !important;
+            padding: 2rem;
+            margin: 0 1rem 1rem 1rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 2;
+            min-height: 200px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(102, 51, 153, 0.3);
+        }
+
+        .styled-modal .loading-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 2rem;
+        }
+
+        .styled-modal .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(102, 51, 153, 0.3);
+            border-top: 3px solid var(--purple-accent-light);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .styled-modal .loading-text {
+            color: var(--purple-accent-light);
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .styled-modal .modal-dialog {
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .styled-modal.show .modal-dialog {
+            transform: scale(1);
+        }
+
+        /* Style the summary content */
+        .styled-modal .modal-body ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .styled-modal .modal-body ul li {
+            background: rgba(26, 26, 46, 0.6);
+            border-left: 4px solid var(--purple-accent-light);
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            color: var(--text-light);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .styled-modal .modal-body ul li:hover {
+            background: rgba(26, 26, 46, 0.8);
+            transform: translateX(5px);
+        }
+
+        .styled-modal .modal-body ul li::before {
+            content: '▶';
+            color: var(--purple-accent-light);
+            font-size: 0.8rem;
+            position: absolute;
+            left: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* Floating particles animation */
+        .styled-modal .modal-content::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(102, 51, 153, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: float 20s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-30px, -30px) rotate(360deg);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+
+            .styled-modal .modal-header,
+            .styled-modal .modal-body {
+                padding: 1.5rem;
+            }
+
+            .styled-modal .modal-title {
+                font-size: 1.25rem;
+            }
+        }
     </style>
 </head>
 
 <body>
     <!-- Sticky Header -->
-    <nav class="navbar navbar-dark sticky-top" style="background: linear-gradient(90deg, #1a1a2e 70%, #663399 100%); box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+    <nav class="navbar navbar-dark sticky-top"
+        style="background: linear-gradient(90deg, #1a1a2e 70%, #663399 100%); box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
         <div class="container-fluid">
             <a class="navbar-brand  w-100 d-flex justify-content-center align-items-center gap-2" href="#">
-                <img src="{{ asset('images/Component 1.png') }}" alt="Logo" width="40" height="40" class="rounded-circle shadow-sm">
+                <img src="{{ asset('images/Component 1.png') }}" alt="Logo" width="40" height="40"
+                    class="rounded-circle shadow-sm">
                 <span style="font-weight:700; letter-spacing:1px;">RevScrap</span>
             </a>
         </div>
@@ -704,23 +896,32 @@
             <h1>PORT ROYALE</h1>
             <p style="margin-top: -1rem">Where Luxury Meets Comfort</p>
         </div>
-        <div style="position:absolute;bottom:0;left:0;width:100%;height:60px;background:linear-gradient(0deg,rgba(26,26,46,0.95),rgba(26,26,46,0));z-index:1;"></div>
+        <div
+            style="position:absolute;bottom:0;left:0;width:100%;height:60px;background:linear-gradient(0deg,rgba(26,26,46,0.95),rgba(26,26,46,0));z-index:1;">
+        </div>
     </div>
 
-    <div class="modal fade" id="summaryModal" tabindex="-1" aria-labelledby="summaryModalLabel" aria-hidden="true">
+    <div class="modal fade styled-modal" id="summaryModal" tabindex="-1" aria-labelledby="summaryModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title text-black" id="summaryModalLabel">Review Summary</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="summaryModalLabel">
+                        <i class="bi bi-stars"></i>
+                        Review Summary
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+                </div>
+                <div class="modal-body" id="summaryContent">
+                    <div class="loading-content">
+                        <div class="loading-spinner"></div>
+                        <div class="loading-text">Loading summary...</div>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body text-black" id="summaryContent">
-              Loading summary...
-            </div>
-          </div>
         </div>
-      </div>
-      
+    </div>
+
 
     <div class="main-container">
         <div class="row g-4">
@@ -832,7 +1033,8 @@
                                         mentions</span>
                                 </li>
                             @else
-                                <li><i class="bi bi-info-circle-fill"></i> No specific improvement areas identified from
+                                <li><i class="bi bi-info-circle-fill"></i> No specific improvement areas identified
+                                    from
                                     recent feedback.</li>
                                 <li><i class="bi bi-check-circle-fill"></i> Keep up the great work!</li>
                             @endif
@@ -853,12 +1055,13 @@
                 <div class="glass-card fade-in">
                     <div class="d-flex justify-content-between align-items-center reviews-header">
                         <h3 class="m-0">Guest Reviews</h3>
-                        <button class="btn btn-sm btn-outline-primary d-flex align-items-center gap-1" id="summarizeBtn">
+                        <button class="btn btn-sm btn-outline-primary d-flex align-items-center gap-1"
+                            id="summarizeBtn">
                             <i class="bi bi-stars"></i>
                             <span>Summarize</span>
                         </button>
                     </div>
-                    
+
 
                     {{-- WRAPPER DIV for scrollable reviews --}}
                     <div id="reviews-scroll-container">
@@ -867,11 +1070,11 @@
                                 @if ($review->rating)
                                     <div class="stars">
                                         {{ $review->stars }}
-                                        <span class="badge 
-                                            @if($review->sentiment == 'positive') bg-success
+                                        <span
+                                            class="badge 
+                                            @if ($review->sentiment == 'positive') bg-success
                                             @elseif($review->sentiment == 'negative') bg-danger
-                                            @else bg-secondary
-                                            @endif">
+                                            @else bg-secondary @endif">
                                             {{ ucfirst($review->sentiment) }}
                                         </span>
                                     </div>
@@ -1207,59 +1410,85 @@
 
             // Update every 7 seconds
             setInterval(updateFeedbackSnippet, 7000);
-            updateFeedbackSnippet(); 
+            updateFeedbackSnippet();
         });
     </script>
 
-<script>
-    document.getElementById("summarizeBtn").addEventListener("click", function () {
-        const modal = new bootstrap.Modal(document.getElementById("summaryModal"));
-        modal.show();
-    
-        // Show loading text
-        document.getElementById("summaryContent").innerHTML = "<p>Loading summary...</p>";
-    
-        fetch("{{ route('summarize.reviews') }}", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRF-TOKEN": "{{ csrf_token() }}"
-            },
-            body: JSON.stringify({})
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.summary && data.summary.content) {
-                const summaryText = data.summary.content;
-    
-                // Split into sentences or lines, adjust as needed
-                const bulletPoints = summaryText
-                    .split(/[.?!]\s+/)  // Split by sentence ending
-                    .filter(point => point.trim().length > 0);
-    
-                // Create bullet list
-                const ul = document.createElement("ul");
-                bulletPoints.forEach(point => {
-                    const li = document.createElement("li");
-                    li.textContent = point.trim();
-                    ul.appendChild(li);
+    <script>
+        document.getElementById("summarizeBtn").addEventListener("click", function() {
+            const modal = new bootstrap.Modal(document.getElementById("summaryModal"));
+            modal.show();
+
+            // Show enhanced loading animation
+            document.getElementById("summaryContent").innerHTML = `
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Analyzing reviews and generating insights...</div>
+        </div>
+    `;
+
+            fetch("{{ route('summarize.reviews') }}", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                    },
+                    body: JSON.stringify({})
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.summary && data.summary.content) {
+                        const summaryText = data.summary.content;
+
+                        // Split into sentences or lines, adjust as needed
+                        const bulletPoints = summaryText
+                            .split(/[.?!]\s+/) // Split by sentence ending
+                            .filter(point => point.trim().length > 0);
+
+                        // Create styled bullet list
+                        const ul = document.createElement("ul");
+                        ul.style.animation = "fadeIn 0.6s ease-out";
+
+                        bulletPoints.forEach((point, index) => {
+                            const li = document.createElement("li");
+                            li.textContent = point.trim();
+                            li.style.animationDelay = `${index * 0.1}s`;
+                            li.style.animation = "fadeInUp 0.6s ease-out forwards";
+                            li.style.opacity = "0";
+                            ul.appendChild(li);
+                        });
+
+                        // Replace content with fade effect
+                        const contentDiv = document.getElementById("summaryContent");
+                        contentDiv.style.transition = "opacity 0.3s ease";
+                        contentDiv.style.opacity = "0";
+
+                        setTimeout(() => {
+                            contentDiv.innerHTML = "";
+                            contentDiv.appendChild(ul);
+                            contentDiv.style.opacity = "1";
+                        }, 300);
+                    } else {
+                        document.getElementById("summaryContent").innerHTML = `
+                <div class="text-center">
+                    <i class="bi bi-exclamation-triangle" style="font-size: 2rem; color: var(--orange-warning); margin-bottom: 1rem;"></i>
+                    <p>Failed to generate summary. Please try again.</p>
+                </div>
+            `;
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                    document.getElementById("summaryContent").innerHTML = `
+            <div class="text-center">
+                <i class="bi bi-x-circle" style="font-size: 2rem; color: var(--red-danger); margin-bottom: 1rem;"></i>
+                <p>Error loading summary. Please check your connection and try again.</p>
+            </div>
+        `;
                 });
-    
-                // Replace content
-                const contentDiv = document.getElementById("summaryContent");
-                contentDiv.innerHTML = "";
-                contentDiv.appendChild(ul);
-            } else {
-                document.getElementById("summaryContent").textContent = "Failed to get summary.";
-            }
-        })
-        .catch(err => {
-            console.error(err);
-            document.getElementById("summaryContent").textContent = "Error loading summary.";
         });
-    });
     </script>
-    
+
 </body>
 
 </html>
